@@ -3,6 +3,9 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import {Container, Row, Card, Button, Col} from 'react-bootstrap'
 import { productContext } from './context/productContext'
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 
 const App = () => {
   const [products,setProducts] = useState([])
@@ -29,7 +32,7 @@ const App = () => {
   }
 
   const addToCart = () =>{
-    
+    // A usar para hacer la seleccion del carrito
   }
 
   useEffect(()=>{
@@ -38,6 +41,7 @@ const App = () => {
 
   return (
       <>
+        <Header /> 
         <Container>
           <Row>
             {
@@ -55,7 +59,8 @@ const App = () => {
                         {pr.price}
                       </Card.Text>
                       <Button variant="primary" onClick={()=>{viewProduct(pr._id)}}>Ver Producto / View Product</Button>
-                      <Button variant="primary" onClick={addToCart}>Agregar al Carrito / Add to Cart</Button>
+                      {/* El sguiente boton te manda a login, pero la intencion es mandarlo al carrito de compras eventualmente */}
+                      <Button variant="primary" onClick={buyProducts}>Agregar al Carrito / Add to Cart</Button> 
                     </Card.Body>
                     </Card>
                 </Col>
@@ -67,7 +72,8 @@ const App = () => {
             }
           </Row>
           <Button variant="secondary" onClick={buyProducts}>Ir a Carito de Compras</Button>
-        </Container>    
+        </Container>  
+        <Footer />  
       </>
   )
 }
