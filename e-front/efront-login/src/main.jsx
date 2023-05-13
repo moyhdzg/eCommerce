@@ -10,12 +10,18 @@ import Register from './components/Register.jsx'
 import UserProvider from './context/userContext.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import ProductProvider from './context/productContext.jsx'
+import ProductView from './components/ProductView.jsx'
 
 
 const router = createBrowserRouter([
   {
     path:'/',
-    element:<App />
+    element:<ProductProvider><App /></ProductProvider>
+  },
+  {
+    path:'/singleproductview',
+    element:<ProductProvider><ProductView /></ProductProvider>
   },
   {
     path:'/register',
